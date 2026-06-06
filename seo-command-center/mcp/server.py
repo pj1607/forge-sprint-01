@@ -169,9 +169,18 @@ class H(BaseHTTPRequestHandler):
 
 
 def start_dashboard(port=PORT):
-    httpd = ThreadingHTTPServer(("127.0.0.1", port), H)
-    threading.Thread(target=httpd.serve_forever, daemon=True).start()
-    return httpd
+    global PORT
+    current_port = port
+    while True:
+        try:
+            httpd = ThreadingHTTPServer(("127.0.0.1", current_port), H)
+            PORT = current_port
+            threading.Thread(target=httpd.serve_forever, daemon=True).start()
+            return httpd
+        except OSError:
+            current_port += 1
+            if current_port > port + 100:
+                raise RuntimeError(f"Could not find a free port between {port} and {current_port}")
 
 
 def _run_mcp():

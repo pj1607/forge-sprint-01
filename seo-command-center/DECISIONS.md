@@ -19,6 +19,12 @@ Format:
 - `[15:20] Model claimed 100% detector coverage → rejected claim and enforced rulebook line-by-line verification for accuracy.`
 - `[15:24] Decided to enforce strict filter rule (HTML + indexable + 200) globally → prevents false positives in meta/title detectors.`
 - `[15:28] Prioritized deterministic completeness over ML fixes → scoring depends on exact rule compliance, not heuristic outputs.`
+- `[15:45] Separated fix logic from detection logic → improves architecture clarity and scoring alignment.`
+- `[15:46] Restricted model usage to text rewriting only → prevents nondeterministic scoring errors.`
+- `[15:47] Introduced deterministic redirect mapping strategy → ensures reproducibility on hidden export.`
+- `[15:55] Dashboard crash due to WinError 10013 → decided to implement dynamic port fallback (7700+ increment) instead of forcing manual port kill to improve usability and judge reliability score.`
+
+- `[15:58] Chose stability over fixed port assumption → system now self-heals port conflicts and prints active URL.`
 
 
 ---

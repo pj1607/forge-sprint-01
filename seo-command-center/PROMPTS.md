@@ -63,6 +63,28 @@ Completing full rulebook compliance for hidden export accuracy scoring.
 **Revised?**
 Yes — initially assumed full coverage existed, but verification showed rulebook gaps requiring additional detectors and stricter filtering.
 
+### Prompt 6
+
+**Prompt:**
+Create a fix engine (seo/fixer.py) that generates SEO fixes including title rewrites, meta description rewrites, and redirect maps using deterministic selection + optional model-based text generation.
+
+**For:**
+Building champion-tier fix output for report.json and report.html.
+
+**Revised?**
+Yes — initially assumed fixes could be derived from detection layer, but separation required a dedicated fix pipeline.
+
+### Prompt 7
+
+**Prompt:**
+Fix PermissionError WinError 10013 when starting ThreadingHTTPServer by adding automatic port fallback (7700+). Ensure SSE + MCP still works.
+
+**For:**
+Stabilizing dashboard startup on Windows systems where ports are sometimes locked.
+
+**Revised?**
+No.
+
 ---
 
 

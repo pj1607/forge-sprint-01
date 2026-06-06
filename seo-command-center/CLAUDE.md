@@ -50,3 +50,19 @@ dashboard at localhost:7700, and outputs `outputs/report.json` + `outputs/report
 - Cross-page duplicates must use normalized values (strip + lowercase).
 - Missing meta + H1 checks must ONLY apply to indexable 200 HTML pages.
 - Every detector change must be validated with a rerun on sample-export.
+## Fix Engine rules (NEW)
+- Fix generation is separate from detection.
+- Detection must remain deterministic.
+- Model is only allowed for:
+  - title rewriting
+  - meta description rewriting
+- Redirect mapping must be deterministic (graph / similarity logic).
+- Never generate fixes for non-indexable pages.
+- Every fix must validate length constraints before output.
+## Runtime stability rules
+
+- Dashboard must never crash due to port conflicts.
+- If default port (7700) is unavailable, automatically fallback to next free port.
+- System must print the active dashboard URL on startup.
+- Never hard-fail on Windows socket permission errors.
+- MCP tools and SSE event stream must remain functional regardless of port change.
