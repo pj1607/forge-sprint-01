@@ -35,3 +35,7 @@ dashboard at localhost:7700, and outputs `outputs/report.json` + `outputs/report
 - Detector accuracy is the highest scoring category (20 points), so SEO issue detection is being implemented before model-based title rewriting.
 - Use deterministic Python for all issue detection. Reserve the model for title/meta generation and redirect recommendations.
 - Every detector must work on unseen exports and not rely on sample-export specific values.
+- Redirect chain and redirect loop detection are high-severity issues and should be implemented before fixer generation.
+- Prefer graph/map-based redirect analysis over hardcoded redirect assumptions.
+- Verify detector counts after every new detector before moving to reporting or AI-generated fixes.
+- Raw Screaming Frog counts can be misleading. Always apply rulebook filters (HTML, status 200, indexable) before classifying SEO issues.

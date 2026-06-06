@@ -119,6 +119,37 @@ def detect(rows: list[dict]) -> list[dict]:
         [r["Address"] for r in rows if 300 <= _int(r.get("Status Code")) <= 399],
         "URLs that redirect (3xx).")
 
+    # --- Redirect Chains and Loops ---
+    redirect_map = {r["Address"]: r.get("Redirect URL") for r in rows if 300 <= _int(r.get("Status Code")) <= 399}
+
+    chain_urls = []
+    loop_urls = []
+
+    for start_url in redirect_map:
+        path = []
+        curr = start_url
+        while curr in redirect_map:
+            path.append(curr)
+            next_url = redirect_map[curr]
+            if not next_url:
+                break
+            if next_url in path:
+                loop_urls.append(start_url)
+                break
+            curr = next_url
+            if len(path) > 10:
+                loop_urls.append(start_url)
+                break
+        else:
+            # If it didn't loop, check if it was a chain
+            # a chain exists when a redirect target is itself another redirecting URL
+            # i.e., the path had more than 1 element.
+            if len(path) > 1:
+                chain_urls.append(start_url)
+
+    add("redirect_chain", "High", chain_urls, "URLs that are part of a redirect chain (multiple hops).")
+    add("redirect_loop", "High", loop_urls, "URLs that are part of a redirect loop.")
+
     add("thin_content", "Low",
         [r["Address"] for r in html if indexable(r) and _int(r.get("Word Count")) < 200],
         "Indexable pages with low word count.")
