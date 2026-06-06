@@ -11,13 +11,8 @@ Format:
 
 ---
 
-## Example (replace with your own)
-- `[10:20]` Chose plain-csv parsing over pandas → fewer deps, fast enough for 5k rows, model
-  quota saved for the fixer.
-- `[11:05]` Title detector over-counted duplicates → realized non-indexable pages were
-  included; added an indexable+200 filter (per rulebook).
-- `[12:40]` Dashboard wasn't updating live → MCP tool wasn't emitting the SSE event; added
-  `_emit("issue", row)` in extract.
+- `[20:15] Prioritized detector implementation before AI-generated fixes → issue detection accuracy is worth more leaderboard points than title rewriting.`
+
 
 ---
 

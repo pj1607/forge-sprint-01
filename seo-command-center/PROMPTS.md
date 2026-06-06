@@ -23,5 +23,14 @@ Format per entry:
 ---
 
 ## My prompts
-1. ...
-2. ...
+
+### Prompt 1
+
+Prompt:
+"Read rulebook.md and seo/detector.py..."
+
+For:
+Implementing remaining metadata and content detectors.
+
+Revised?
+No.
