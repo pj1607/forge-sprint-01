@@ -97,7 +97,7 @@ def detect(rows: list[dict]) -> list[dict]:
 
     # --- H1s ---
     add("missing_h1", "Medium",
-        [r["Address"] for r in html if is_200(r) and not (r.get("H1-1", "") or "").strip()],
+        [r["Address"] for r in idx200 if not (r.get("H1-1", "") or "").strip()],
         "Pages with no H1 tag.")
 
     by_h1 = defaultdict(list)
@@ -151,7 +151,7 @@ def detect(rows: list[dict]) -> list[dict]:
     add("redirect_loop", "High", loop_urls, "URLs that are part of a redirect loop.")
 
     add("thin_content", "Low",
-        [r["Address"] for r in html if indexable(r) and _int(r.get("Word Count")) < 200],
+        [r["Address"] for r in idx200 if _int(r.get("Word Count")) < 200],
         "Indexable pages with low word count.")
 
     add("orphan_page", "Medium",

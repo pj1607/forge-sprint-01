@@ -45,12 +45,12 @@ No.
 ### Prompt 4
 
 **Prompt:**
-"Validate missing-title detection using the exact rulebook filters rather than counting all blank title fields."
+Review seo/detector.py and compare implemented detectors against rulebook.md. Identify which required detectors are still missing or not being triggered.
 
 **For:**
-Improving detector precision.
+Verification before continuing feature development.
 
-**Revised?:**
+**Revised?**
 No.
 
 

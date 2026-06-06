@@ -37,5 +37,4 @@ dashboard at localhost:7700, and outputs `outputs/report.json` + `outputs/report
 - Every detector must work on unseen exports and not rely on sample-export specific values.
 - Redirect chain and redirect loop detection are high-severity issues and should be implemented before fixer generation.
 - Prefer graph/map-based redirect analysis over hardcoded redirect assumptions.
-- Verify detector counts after every new detector before moving to reporting or AI-generated fixes.
-- Raw Screaming Frog counts can be misleading. Always apply rulebook filters (HTML, status 200, indexable) before classifying SEO issues.
+- Verification is required after every detector batch. Compare implemented detectors against rulebook coverage before moving to reporting or AI-generated fixes.
