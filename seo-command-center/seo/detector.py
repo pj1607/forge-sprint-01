@@ -100,6 +100,10 @@ def detect(rows: list[dict]) -> list[dict]:
         [r["Address"] for r in idx200 if not (r.get("H1-1", "") or "").strip()],
         "Pages with no H1 tag.")
 
+    add("multiple_h1", "Medium",
+        [r["Address"] for r in idx200 if (r.get("H1-2", "") or "").strip()],
+        "Pages with more than one H1 tag.")
+
     by_h1 = defaultdict(list)
     for r in idx200:
         h = (r.get("H1-1", "") or "").strip()
@@ -107,6 +111,15 @@ def detect(rows: list[dict]) -> list[dict]:
             by_h1[h].append(r["Address"])
     dup_h1 = [u for urls in by_h1.values() if len(urls) > 1 for u in urls]
     add("duplicate_h1", "Low", dup_h1, "Indexable pages sharing an identical H1.")
+
+    # --- Canonicals ---
+    add("missing_canonical", "Low",
+        [r["Address"] for r in idx200 if not (r.get("Canonical URL", "") or "").strip()],
+        "Indexable pages missing a canonical tag.")
+
+    add("canonical_mismatch", "Low",
+        [r["Address"] for r in idx200 if (r.get("Canonical URL", "") or "").strip() and r.get("Canonical URL") != r["Address"]],
+        "Canonical URL does not match the page address.")
 
     # --- Other ---
     add("broken_link", "High",

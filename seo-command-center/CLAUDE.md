@@ -37,4 +37,16 @@ dashboard at localhost:7700, and outputs `outputs/report.json` + `outputs/report
 - Every detector must work on unseen exports and not rely on sample-export specific values.
 - Redirect chain and redirect loop detection are high-severity issues and should be implemented before fixer generation.
 - Prefer graph/map-based redirect analysis over hardcoded redirect assumptions.
+- Verify detector counts after every new detector before moving to reporting or AI-generated fixes.
 - Verification is required after every detector batch. Compare implemented detectors against rulebook coverage before moving to reporting or AI-generated fixes.
+- **Detector accuracy rules (updated)**
+- Do NOT trust model output for completeness claims.
+- Always verify detector coverage against rulebook line-by-line.
+- "Implemented" only counts if:
+  - logic exists in code
+  - it runs on unseen export rows
+  - it respects indexable + HTML + status filters correctly
+- Redirect detection must use graph traversal, not string matching.
+- Cross-page duplicates must use normalized values (strip + lowercase).
+- Missing meta + H1 checks must ONLY apply to indexable 200 HTML pages.
+- Every detector change must be validated with a rerun on sample-export.

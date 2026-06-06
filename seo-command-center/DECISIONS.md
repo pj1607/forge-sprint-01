@@ -16,7 +16,9 @@ Format:
 - `[14:33] Performed detector verification before adding new features → wanted to confirm issue counts and rulebook compliance before extending the audit engine.`
 - `[14:49] Prioritized redirect graph analysis before report generation → redirect chains and loops are High severity and directly affect detection accuracy.`
 - `[15:06] Detector output remained at 12 issue types after adding redirect analysis → paused feature work and verified detector implementation before proceeding.`
-
+- `[15:20] Model claimed 100% detector coverage → rejected claim and enforced rulebook line-by-line verification for accuracy.`
+- `[15:24] Decided to enforce strict filter rule (HTML + indexable + 200) globally → prevents false positives in meta/title detectors.`
+- `[15:28] Prioritized deterministic completeness over ML fixes → scoring depends on exact rule compliance, not heuristic outputs.`
 
 
 ---

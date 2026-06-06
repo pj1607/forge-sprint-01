@@ -52,7 +52,16 @@ Verification before continuing feature development.
 
 **Revised?**
 No.
+### Prompt 5
 
+**Prompt:**
+Review seo/detector.py against rulebook.md line-by-line and identify missing or partially implemented detectors. Implement all missing detectors with strict deterministic Python logic and correct filtering rules.
+
+**For:**
+Completing full rulebook compliance for hidden export accuracy scoring.
+
+**Revised?**
+Yes — initially assumed full coverage existed, but verification showed rulebook gaps requiring additional detectors and stricter filtering.
 
 ---
 
