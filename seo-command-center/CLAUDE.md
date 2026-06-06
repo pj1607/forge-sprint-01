@@ -32,6 +32,3 @@ dashboard at localhost:7700, and outputs `outputs/report.json` + `outputs/report
 ## Things I have learned during the build (update this as you go)
 - (e.g. "SF leaves Title 1 blank on redirected URLs — must filter Status Code 200 first")
 
-- Detector accuracy is the highest scoring category (20 points), so SEO issue detection is being implemented before model-based title rewriting.
-- Use deterministic Python for all issue detection. Reserve the model for title/meta generation and redirect recommendations.
-- Every detector must work on unseen exports and not rely on sample-export specific values.
