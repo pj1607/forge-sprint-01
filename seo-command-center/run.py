@@ -27,14 +27,20 @@ def main():
     ap.add_argument("--no-dashboard", action="store_true")
     args = ap.parse_args()
 
+    export_dir = os.path.abspath(args.export_dir)
+    print(f"[seo] loading export from: {export_dir}", flush=True)
+
     if not args.no_dashboard:
         server.start_dashboard()
         print(f"[seo] dashboard: http://localhost:{server.PORT}", flush=True)
         time.sleep(1)
 
     t0 = time.time()
-    server.seo_load(args.export_dir)
-    res = server.seo_detect()
+    load_res = server.seo_load(export_dir)
+    print(f"[seo] loaded {load_res.get('urls', 0)} URLs", flush=True)
+
+    detect_res = server.seo_detect()
+    print(f"[seo] detected {detect_res.get('detected', 0)} issue types", flush=True)
 
     # starter recommendations from the detected issues (the skill writes richer ones)
     issues = sorted(server.RUN["issues"], key=lambda x: {"High":0,"Medium":1,"Low":2}.get(x["severity"],3))

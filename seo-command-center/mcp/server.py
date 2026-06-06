@@ -188,7 +188,7 @@ def _run_mcp():
         from mcp.server.fastmcp import FastMCP
     except Exception:
         print(f"[seo] MCP SDK not found. Dashboard only at http://localhost:{PORT}", flush=True)
-        while True: time.sleep(3600)
+        return
     mcp = FastMCP("seo-command-center")
 
     @mcp.tool()
