@@ -23,12 +23,12 @@ python run.py sample-export/
 ```
 seo-command-center/
 ├── .claude-plugin/plugin.json   plugin manifest (skill + command + agents + MCP)
-├── .claude/                     audit hooks (settings.json + hooks/audit.sh) → records your process
+├── .claude/                     audit hooks (settings.json + hooks/audit.sh) - records your process
 ├── skills/seo-audit/SKILL.md    orchestrator
 ├── agents/                      ingest, auditor, fixer, reporter (sub-agents)
 ├── commands/seo-audit.md        the /seo-audit command
 ├── mcp/server.py                local MCP server + live dashboard host (localhost:7700)
-├── seo/detector.py              deterministic issue detection  ← EXTEND THIS to the full rulebook
+├── seo/detector.py              deterministic issue detection  - EXTEND THIS to the full rulebook
 ├── dashboard/                   index.html + app.js (the cockpit)
 ├── scripts/export-transcript.sh saves your session transcript to agent-log.md (commit it)
 ├── run.py                       headless runner (the grader's entry point)
@@ -43,7 +43,7 @@ seo-command-center/
 3. **Improve the dashboard / report** to be genuinely client-ready.
 4. **Commit incrementally** (≥10 commits) and let the audit hooks record your process.
 
-## Process + memory files you must maintain (graded — see challenge brief section 08)
+## Process + memory files you must maintain (graded - see challenge brief section 08)
 These are how the judges assess *how you worked with the AI*, not just the result:
 - `.claude/audit.jsonl` - auto-written by the hooks (every tool call). Commit it. Keep
   `.claude/settings.json` in place so the hooks keep recording.
@@ -54,7 +54,7 @@ These are how the judges assess *how you worked with the AI*, not just the resul
 - `PROMPTS.md` - log your key prompts (the ones that moved the build).
 - `DECISIONS.md` - log your real decisions and what you learned / fixed.
 
-The three records (audit log, transcript, git history) must agree — that is how a real process
+The three records (audit log, transcript, git history) must agree - that is how a real process
 is told apart from a fabricated one. Do not edit or fake the logs.
 
 ## The model
